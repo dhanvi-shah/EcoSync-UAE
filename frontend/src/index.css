@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html,
+body,
+#root {
+  @apply min-h-screen bg-transparent;
+}
+
+body {
+  @apply antialiased text-gray-200;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
