@@ -1,11 +1,20 @@
-# Sustainable Shopping Assistant
+# ECOSYNC UAE
 
-Full-stack app: analyze a product **from a URL and/or photo**, get an **eco score** (AI + rules), **sustainability summary**, **hidden impact**, **carbon estimate**, **eco labels**, **UN SDG tags**, and **greener alternatives**. The UI includes a **local dashboard** (totals stored in the browser).
+Full-stack app branded for **EcoSync UAE**: analyze a product **from a URL and/or photo**, get an **eco score** (AI + rules), **sustainability summary**, **hidden impact**, **carbon estimate**, **eco labels**, **UN SDG tags**, and **greener alternatives**. The UI includes a **local dashboard** (analysis totals stored in the browser) and a dedicated **Shopping Assistant** experience with curated recommendations.
 
 | Layer | Stack |
 |--------|--------|
 | API | FastAPI, LangGraph, OpenAI (text + vision) |
 | UI | React 18, Vite, Tailwind, Framer Motion |
+
+---
+
+## UI overview
+
+- **Primary navigation:** **Shopping Assistant** links to `/sustainable-shopping` (EcoSync-themed glass UI, motion).
+- **Discover (`/sustainable-shopping`):** search (text or paste a product URL), **category filters**, **sustainable product recommendations** with **eco score** visuals, and a **Deep analysis** section that embeds the same analyzer used elsewhere. Opening a recommendation or submitting a shop URL can pre-fill the analyzer via the `url` query parameter and scroll to the analysis block.
+- **Insights (`/sustainable-shopping/insights`):** **Analysis insights** for the assistant—aggregated eco stats from analyses you’ve run (same stats context as the main dashboard).
+- **Other routes:** `/` (home) and `/dashboard` (EcoSync dashboard) live alongside the assistant; any analysis you finish from Discover updates the same **browser-persisted** aggregates shown under Insights.
 
 ---
 
@@ -25,6 +34,10 @@ Full-stack app: analyze a product **from a URL and/or photo**, get an **eco scor
     ├── .env.example           # optional VITE_* for deployed API
     ├── package.json
     └── src/
+        ├── components/shopping/          # Shopping Assistant hub UI
+        ├── data/shoppingRecommendationsMock.ts  # demo catalog / categories
+        ├── pages/sustainable-shopping/     # layout, home, insights routes
+        └── pages/analyze/                  # analyzer page (full + embedded)
 ```
 
 ---
